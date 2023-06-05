@@ -1,12 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const Trainees = require("./model/todoModel");
 
 const app = express();
-const PORT = 8080;
+const port = process.env.PORT || 8080;
 
 // config ejs
 app.set("view engine", "ejs");
 require("dotenv").config();
+
+const db_url = process.env.DBURL;
 
 // Custom Middleware
 // app.use((req, res, next) => {
@@ -19,7 +22,7 @@ require("dotenv").config();
 app.use(express.static("public"));
 
 mongoose
-  .connect(process.env.DBURL)
+  .connect(db_url)
   .then(() => {
     console.log("DB connected succesfully");
   })
@@ -34,6 +37,21 @@ const trainees = [
   { name: "John", profession: "Desktop dev" },
 ];
 
+// TESTING OUR MODEL AND DATABASE
+app.get("/add-trainee", (req, res) => {
+  const TRAINEES = new Trainees({
+    name: " Kruz",
+    profession: "Senior Frontend Developer",
+    description: "He's quite good at it",
+  });
+  TRAINEES.save()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 // Routes
 app.get("/", (req, res) => {
   res.status(200).render("index", { title: "EJS Home Page", trainees });
@@ -51,6 +69,6 @@ app.use((req, res) => {
   res.status(404).render("404", { title: "EJS Error" });
 });
 
-app.listen(PORT, () => {
-  console.log(`server running on ${PORT}`);
+app.listen(port, () => {
+  console.log(`server running on ${port}`);
 });
