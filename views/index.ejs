@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body>
+    <%- include('../partials/nav.ejs') %>
+    <section class="home-heading">
+      <h1>Welcome To My EJS Home Page</h1>
+    </section>
+    <section class="home-content">
+      <% if(trainees.length) { %> <% trainees.map((trainee)=> {%>
+      <h1><%= trainee.name %></h1>
+      <h3><%= trainee.profession %></h3>
+      <% }) %> <% } else { %>
+      <h1>No trainees in town today.</h1>
+      <% } %>
+    </section>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>
