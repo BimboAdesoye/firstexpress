@@ -87,21 +87,32 @@ app.get("/single-trainee", async (req, res) => {
 });
 
 // Routes
-const trainees = [
-  { name: "Christy", profession: "Front-end dev" },
-  { name: "Ejiro", profession: "Back-end dev" },
-  { name: "Henry", profession: "Mobile app dev" },
-  { name: "John", profession: "Desktop dev" },
-];
+// const trainees = [
+//   { name: "Christy", profession: "Front-end dev" },
+//   { name: "Ejiro", profession: "Back-end dev" },
+//   { name: "Henry", profession: "Mobile app dev" },
+//   { name: "John", profession: "Desktop dev" },
+// ];
 
 app.get("/", (req, res) => {
-  res.status(200).render("index", { title: "EJS Home Page", trainees });
+  res.redirect("/todos");
+  //   res.status(200).render("index", { title: "EJS Home Page",  });
 });
 
 app.get("/about", (req, res) => {
   res.status(200).render("about", { title: "EJS About Page" });
 });
 
+// todo routes
+app.get("/todos", async (req, res) => {
+  try {
+    const allTrainees = await Trainees.find();
+    res.render("index", { title: "EJS About Page", trainees: allTrainees });
+  } catch (err) {
+    console.log(err);
+  }
+});
+ 
 app.get("/todo/create", (req, res) => {
   res.status(200).render("createList", { title: "EJS create-todo Page" });
 });
