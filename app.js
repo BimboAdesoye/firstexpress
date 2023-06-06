@@ -31,12 +31,12 @@ mongoose
   });
 
 // TESTING OUR MODEL AND DATABASE
-app.get("/add-trainee", async (req, res) => {
-  const TRAINEES = new Trainees({
-    name: "John",
-    profession: "Senior Desktop Developer",
-    description: "He's quite good at it",
-  });
+// app.get("/add-trainee", async (req, res) => {
+//   const TRAINEES = new Trainees({
+//     name: "John",
+//     profession: "Senior Desktop Developer",
+//     description: "He's quite good at it",
+//   });
   //   TRAINEES.save()
   //     .then((result) => {
   //       res.send(result);
@@ -44,22 +44,22 @@ app.get("/add-trainee", async (req, res) => {
   //     .catch((err) => {
   //       console.log(err);
   //     });
-  try {
-    const savedTrainees = await TRAINEES.save();
-    res.send(savedTrainees);
-  } catch (err) {
-    console.log(err);
-  }
-});
+//   try {
+//     const savedTrainees = await TRAINEES.save();
+//     res.send(savedTrainees);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 // for getting all info from the DB
-app.get("/all-trainees", async (req, res) => {
-  try {
-    const allTrainees = await Trainees.find();
-    res.send(allTrainees);
-  } catch (err) {
-    console.log(err);
-  }
+// app.get("/all-trainees", async (req, res) => {
+//   try {
+//     const allTrainees = await Trainees.find();
+//     res.send(allTrainees);
+//   } catch (err) {
+//     console.log(err);
+//   }
   //   Trainees.find()
   //     .then((results) => {
   //       res.send(results);
@@ -67,16 +67,16 @@ app.get("/all-trainees", async (req, res) => {
   //     .catch((err) => {
   //       console.log(err);
   //     });
-});
+// });
 
 // To get a single trainee
-app.get("/single-trainee", async (req, res) => {
-  try {
-    const singleTrainee = await Trainees.findById("647df29d0becac67b7a9d0b0");
-    res.send(singleTrainee);
-  } catch (err) {
-    console.log(err);
-  }
+// app.get("/single-trainee", async (req, res) => {
+//   try {
+//     const singleTrainee = await Trainees.findById("647df29d0becac67b7a9d0b0");
+//     res.send(singleTrainee);
+//   } catch (err) {
+//     console.log(err);
+//   }
   //   Trainees.findById("647df29d0becac67b7a9d0b0")
   //     .then((result) => {
   //       res.send(result);
@@ -84,7 +84,7 @@ app.get("/single-trainee", async (req, res) => {
   //     .catch((err) => {
   //       console.log(err);
   //     });
-});
+// });
 
 // Routes
 // const trainees = [
@@ -96,7 +96,6 @@ app.get("/single-trainee", async (req, res) => {
 
 app.get("/", (req, res) => {
   res.redirect("/todos");
-  //   res.status(200).render("index", { title: "EJS Home Page",  });
 });
 
 app.get("/about", (req, res) => {
