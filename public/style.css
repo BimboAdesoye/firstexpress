@@ -80,6 +80,7 @@ nav ul li {
 
 form {
   margin-top: 3rem;
+  padding-bottom: 3rem;
   display: flex;
   flex-direction: column;
   max-width: 400px;
@@ -101,7 +102,7 @@ form input {
 }
 
 form textarea {
-    outline: none;
+  outline: none;
 }
 
 form button {
