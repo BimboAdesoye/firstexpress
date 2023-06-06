@@ -20,6 +20,7 @@ const db_url = process.env.DBURL;
 // });
 
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 mongoose
   .connect(db_url)
@@ -37,13 +38,13 @@ mongoose
 //     profession: "Senior Desktop Developer",
 //     description: "He's quite good at it",
 //   });
-  //   TRAINEES.save()
-  //     .then((result) => {
-  //       res.send(result);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
+//   TRAINEES.save()
+//     .then((result) => {
+//       res.send(result);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
 //   try {
 //     const savedTrainees = await TRAINEES.save();
 //     res.send(savedTrainees);
@@ -60,13 +61,13 @@ mongoose
 //   } catch (err) {
 //     console.log(err);
 //   }
-  //   Trainees.find()
-  //     .then((results) => {
-  //       res.send(results);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
+//   Trainees.find()
+//     .then((results) => {
+//       res.send(results);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
 // });
 
 // To get a single trainee
@@ -77,13 +78,13 @@ mongoose
 //   } catch (err) {
 //     console.log(err);
 //   }
-  //   Trainees.findById("647df29d0becac67b7a9d0b0")
-  //     .then((result) => {
-  //       res.send(result);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
+//   Trainees.findById("647df29d0becac67b7a9d0b0")
+//     .then((result) => {
+//       res.send(result);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
 // });
 
 // Routes
@@ -111,7 +112,20 @@ app.get("/todos", async (req, res) => {
     console.log(err);
   }
 });
- 
+
+app.post("/todos", (req, res) => {
+  console.log(req.body);
+  const savedTrainee = new Trainees(req.body);
+  savedTrainee
+    .save()
+    .then((result) => {
+      res.redirect("/todos");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 app.get("/todo/create", (req, res) => {
   res.status(200).render("createList", { title: "EJS create-todo Page" });
 });

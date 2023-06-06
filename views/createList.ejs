@@ -4,13 +4,18 @@
   <body>
     <%- include('../partials/nav.ejs') %>
     <main class="container">
-      <form action="">
+      <form action="/todos" method="POST">
         <label for="name">Name</label>
-        <input type="text" id="name" />
+        <input type="text" id="name" name="name" />
         <label for="profession">Profession</label>
-        <input type="text" id="profession" />
+        <input type="text" id="profession" name="profession" />
         <label for="description">Description</label>
-        <textarea id="description" cols="30" rows="10"></textarea>
+        <textarea
+          id="description"
+          cols="30"
+          rows="10"
+          name="description"
+        ></textarea>
         <button>Submit</button>
       </form>
     </main>
