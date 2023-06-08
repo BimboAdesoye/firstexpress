@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Trainees = require("./model/todoModel");
+const todosRouter = require("./router/todosRouter");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -103,32 +103,8 @@ app.get("/about", (req, res) => {
   res.status(200).render("about", { title: "EJS About Page" });
 });
 
-// todo routes
-app.get("/todos", async (req, res) => {
-  try {
-    const allTrainees = await Trainees.find();
-    res.render("index", { title: "EJS About Page", trainees: allTrainees });
-  } catch (err) {
-    console.log(err);
-  }
-});
-
-app.post("/todos", (req, res) => {
-  console.log(req.body);
-  const savedTrainee = new Trainees(req.body);
-  savedTrainee
-    .save()
-    .then((result) => {
-      res.redirect("/todos");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-app.get("/todo/create", (req, res) => {
-  res.status(200).render("createList", { title: "EJS create-todo Page" });
-});
+// todo route
+app.use('/todos',todosRouter);
 
 app.use((req, res) => {
   res.status(404).render("404", { title: "EJS Error" });

@@ -6,11 +6,13 @@
     <section class="home-heading">
       <h1>Welcome To My EJS Home Page</h1>
     </section>
-    <section class="home-content">
-      <% if(trainees.length) { %> <% trainees.map((trainee)=> {%>
-      <h1><%= trainee.name %></h1>
-      <h3><%= trainee.profession %></h3>
-      <p><%= trainee.description %></p>
+    <section class="home-content text-center">
+      <% if(trainees.length) { %>
+         <% trainees.map((trainee)=> {%>
+     <a class="text-decoration-none" href="/todos/specific/<%=trainee._id  %>">
+       <h1 class="text-dark"><%= trainee.name %></h1>
+      <h3 class="text-white"><%= trainee.profession %></h3>
+     </a>
       <% }) %> <% } else { %>
       <h1>No trainees in town today.</h1>
       <% } %>

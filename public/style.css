@@ -24,12 +24,13 @@ nav {
   background-color: dodgerblue;
 }
 
-.navbar {
+.navigate {
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 8vh;
+  
 }
 
 a {
@@ -121,3 +122,4 @@ form button {
 footer {
   position: fixed;
 }
+

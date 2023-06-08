@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body class="container">
+    <%- include('../partials/nav.ejs') %>
+    <div>
+      <h2><%= trainees.name %></h2>
+      <h2><%= trainees.description %></h2>
+      <h2><%= trainees.profession %></h2>
+    </div>
+    <button class="btn btn-primary">
+      <a
+        class="text-white text-decoration-none"
+        href="/todos/delete/<%= trainees._id%>"
+        >Delete</a
+      >
+    </button>
+    <button class="btn btn-primary">
+      <a
+        class="text-white text-decoration-none"
+        href="/todos/edit/<%= trainees._id %>"
+        >Edit</a
+      >
+    </button>
+    <%- include('../partials/footer.ejs')%>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
