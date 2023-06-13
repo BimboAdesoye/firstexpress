@@ -104,7 +104,7 @@ app.get("/about", (req, res) => {
 });
 
 // todo route
-app.use('/todos',todosRouter);
+app.use("/todos", todosRouter);
 
 app.use((req, res) => {
   res.status(404).render("404", { title: "EJS Error" });
